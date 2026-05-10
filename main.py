@@ -25,8 +25,11 @@ else:
         ride_rating = "Strong pace"
     else:
         ride_rating = "Fast pace"
+    print()
+    print("--- Ride Summary ---")
+    print("You rode", distance_km, "km in", time_minutes, "minutes")
 
-
+#Print calculations area
     print("Average speed:", round(average_speed, 1), "km/h")
     print("Estimated time at target speed:", round(target_time_minutes, 1), "minutes")
     print("Pace per kilometre:", round(pace_minutes_per_km, 2), "minutes per kilometre")
@@ -36,8 +39,8 @@ else:
 
 
     if time_difference > 0:
-        print("You are slower than the target speed")
+        print ("You missed your target by", round(time_difference, 1), "minutes")
     elif time_difference < 0:
-        print("You are faster than the target speed")
+        print ("You beat your target by", round(time_difference * -1, 1), "minutes" )
     else:
-        print("You matched your target speed")
+        print ("You matched your target speed")
