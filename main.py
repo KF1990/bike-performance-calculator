@@ -29,7 +29,7 @@ else:
     mechanical_energy = energy_joules * efficiency
     estimated_watts = mechanical_energy / ride_seconds
 
-#Ride rating area
+    #Ride rating area
     if average_speed < 20:
         ride_rating = "Easy pace"
     elif average_speed < 27:
@@ -48,6 +48,18 @@ else:
         wattage_rating = "Strong ride"
     else:
         wattage_rating = "Hard effort"
+
+    #Ride recommendation area
+    if time_difference > 10:
+        recommendation = "You missed your target by alot. Lower the target speed or build more endurance"
+    elif time_difference > 0:
+        recommendation = "You were close to your target. Try the same route again and pace more evenly"
+    elif time_difference < -10:
+        recommendation = "You beat your target by alot. Try increasing your speed next ride"
+    elif time_difference < 0:
+        recommendation = "Good ride. You slightly beat your goal"
+    else:
+        recommendation = "Perfect pacing. Try extending the distance next ride"
 
 
 #Print calculations area
@@ -69,6 +81,10 @@ else:
     print("Estimated time at target speed:", round(target_time_minutes, 1), "minutes")
     print("Time difference from target:", round(time_difference, 1), "minutes")
     print("Speed difference from target:", round(speed_difference, 1), "km/h")
+    print()
+    print("--- Recommendations ---")
+    print("Recommendation: ", recommendation)
+    print()
 
 
 #target time message area
