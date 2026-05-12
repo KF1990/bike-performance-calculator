@@ -1,3 +1,10 @@
+#Defined functions area
+def calculate_average_speed(distance_km, time_hours):
+    return distance_km / time_hours
+
+def calculate_pace(time_minutes, distance_km):
+    return time_minutes / distance_km
+
 #User input area
 print("Enter bike ride details below")
 print()
@@ -13,9 +20,9 @@ if distance_km <= 0 or time_minutes <= 0 or target_speed_kmh <= 0 or calories_pe
 #user calculation area
 else:
     time_hours = time_minutes / 60
-    average_speed = distance_km / time_hours
+    average_speed = calculate_average_speed(distance_km, time_hours)
     estimated_calories = time_hours * calories_per_hour
-    pace_minutes_per_km = time_minutes / distance_km
+    pace_minutes_per_km = calculate_pace(time_minutes, distance_km)
 
     target_time_hours = distance_km / target_speed_kmh
     target_time_minutes = target_time_hours * 60
@@ -64,11 +71,9 @@ else:
 
 #Print calculations area
     print("--- Ride Summary ---")
-    print()
     print("You rode", distance_km, "km in", time_minutes, "minutes")
     print()
     print("--- Performance area ---")
-    print()
     print("Average speed:", round(average_speed, 1), "km/h")
     print("Pace per kilometre:", round(pace_minutes_per_km, 2), "minutes per kilometre")
     print("Estimated average wattage:", round(estimated_watts, 1), "watts")
@@ -77,7 +82,6 @@ else:
     print("Ride type:", wattage_rating)
     print()
     print("--- Target area ---")
-    print()
     print("Estimated time at target speed:", round(target_time_minutes, 1), "minutes")
     print("Time difference from target:", round(time_difference, 1), "minutes")
     print("Speed difference from target:", round(speed_difference, 1), "km/h")
