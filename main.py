@@ -5,6 +5,13 @@ def calculate_average_speed(distance_km, time_hours):
 def calculate_pace(time_minutes, distance_km):
     return time_minutes / distance_km
 
+def calculate_estimated_calories(time_hours, calories_per_hour):
+    return time_hours * calories_per_hour
+
+def calculate_target_time_hours(distance_km, target_speed_kmh):
+    target_time_hours = distance_km / target_speed_kmh
+    return target_time_hours * 60
+
 #User input area
 print("Enter bike ride details below")
 print()
@@ -21,11 +28,9 @@ if distance_km <= 0 or time_minutes <= 0 or target_speed_kmh <= 0 or calories_pe
 else:
     time_hours = time_minutes / 60
     average_speed = calculate_average_speed(distance_km, time_hours)
-    estimated_calories = time_hours * calories_per_hour
+    estimated_calories = calculate_estimated_calories(time_hours, calories_per_hour)
     pace_minutes_per_km = calculate_pace(time_minutes, distance_km)
-
-    target_time_hours = distance_km / target_speed_kmh
-    target_time_minutes = target_time_hours * 60
+    target_time_minutes = calculate_target_time_hours (distance_km, target_speed_kmh)
 
     time_difference = time_minutes - target_time_minutes
     speed_difference = average_speed - target_speed_kmh
