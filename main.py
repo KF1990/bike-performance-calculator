@@ -8,9 +8,16 @@ def calculate_pace(time_minutes, distance_km):
 def calculate_estimated_calories(time_hours, calories_per_hour):
     return time_hours * calories_per_hour
 
-def calculate_target_time_hours(distance_km, target_speed_kmh):
+def calculate_target_time_minutes(distance_km, target_speed_kmh):
     target_time_hours = distance_km / target_speed_kmh
     return target_time_hours * 60
+
+def calculate_estimated_watts(time_minutes, estimated_calories):
+    ride_seconds = time_minutes * 60
+    energy_joules = estimated_calories * 4184
+    efficiency = 0.24
+    mechanical_energy = energy_joules * efficiency
+    return mechanical_energy / ride_seconds
 
 #User input area
 print("Enter bike ride details below")
@@ -30,16 +37,10 @@ else:
     average_speed = calculate_average_speed(distance_km, time_hours)
     estimated_calories = calculate_estimated_calories(time_hours, calories_per_hour)
     pace_minutes_per_km = calculate_pace(time_minutes, distance_km)
-    target_time_minutes = calculate_target_time_hours (distance_km, target_speed_kmh)
-
+    target_time_minutes = calculate_target_time_minutes(distance_km, target_speed_kmh)
     time_difference = time_minutes - target_time_minutes
     speed_difference = average_speed - target_speed_kmh
-    ride_seconds = time_minutes * 60
-
-    energy_joules = estimated_calories * 4184
-    efficiency = 0.24
-    mechanical_energy = energy_joules * efficiency
-    estimated_watts = mechanical_energy / ride_seconds
+    estimated_watts = calculate_estimated_watts(time_minutes, estimated_calories)
 
     #Ride rating area
     if average_speed < 20:
@@ -47,7 +48,7 @@ else:
     elif average_speed < 27:
         ride_rating = "Medium pace"
     elif average_speed < 32:
-        ride_rating = "Strong pace"
+        ride_rating = "Hard pace"
     else:
         ride_rating = "Fast pace"
 
