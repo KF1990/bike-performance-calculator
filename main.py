@@ -19,6 +19,17 @@ def calculate_estimated_watts(time_minutes, estimated_calories):
     mechanical_energy = energy_joules * efficiency
     return mechanical_energy / ride_seconds
 
+def get_ride_rating(average_speed):
+    if average_speed < 20:
+        return "Easy Ride"
+    elif average_speed < 27:
+        return "Medium Pace"
+    elif average_speed < 32:
+        return "Hard Pace"
+    else:
+        return "Fast Pace"
+
+
 #User input area
 print("Enter bike ride details below")
 print()
@@ -41,6 +52,7 @@ else:
     time_difference = time_minutes - target_time_minutes
     speed_difference = average_speed - target_speed_kmh
     estimated_watts = calculate_estimated_watts(time_minutes, estimated_calories)
+    ride_rating = get_ride_rating(average_speed)
 
     #Ride rating area
     if average_speed < 20:
