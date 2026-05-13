@@ -29,6 +29,15 @@ def get_ride_rating(average_speed):
     else:
         return "Fast Pace"
 
+def get_wattage_rating(estimated_watts):
+    if estimated_watts < 100:
+        return "Very Easy"
+    elif estimated_watts < 180:
+        return "Endurance ride"
+    elif estimated_watts < 250:
+        return "Strong ride"
+    else:
+        return "Hard Effort"
 
 #User input area
 print("Enter bike ride details below")
@@ -52,27 +61,9 @@ else:
     time_difference = time_minutes - target_time_minutes
     speed_difference = average_speed - target_speed_kmh
     estimated_watts = calculate_estimated_watts(time_minutes, estimated_calories)
+
     ride_rating = get_ride_rating(average_speed)
-
-    #Ride rating area
-    if average_speed < 20:
-        ride_rating = "Easy pace"
-    elif average_speed < 27:
-        ride_rating = "Medium pace"
-    elif average_speed < 32:
-        ride_rating = "Hard pace"
-    else:
-        ride_rating = "Fast pace"
-
- #Ride wattage area
-    if estimated_watts <100:
-        wattage_rating = "Very Easy"
-    elif estimated_watts < 180:
-        wattage_rating = "Endurance ride"
-    elif estimated_watts < 250:
-        wattage_rating = "Strong ride"
-    else:
-        wattage_rating = "Hard effort"
+    wattage_rating = get_wattage_rating(estimated_watts)
 
     #Ride recommendation area
     if time_difference > 10:
