@@ -39,6 +39,18 @@ def get_wattage_rating(estimated_watts):
     else:
         return "Hard Effort"
 
+def get_recommendation (time_difference):
+    if time_difference > 10:
+        return "You missed your target by alot. Lower the target speed or build more endurance"
+    elif time_difference > 0:
+        return "You were close to your target. Try the same route again and pace more evenly"
+    elif time_difference < -10:
+        return "You beat your target by alot. Try increasing your speed next ride"
+    elif time_difference < 0:
+        return "Good ride. You slightly beat your goal"
+    else:
+        return "Perfect pacing. Try extending the distance next ride"
+
 #User input area
 print("Enter bike ride details below")
 print()
@@ -58,24 +70,16 @@ else:
     estimated_calories = calculate_estimated_calories(time_hours, calories_per_hour)
     pace_minutes_per_km = calculate_pace(time_minutes, distance_km)
     target_time_minutes = calculate_target_time_minutes(distance_km, target_speed_kmh)
+
     time_difference = time_minutes - target_time_minutes
     speed_difference = average_speed - target_speed_kmh
     estimated_watts = calculate_estimated_watts(time_minutes, estimated_calories)
 
     ride_rating = get_ride_rating(average_speed)
     wattage_rating = get_wattage_rating(estimated_watts)
+    recommendation = get_recommendation(time_difference)
 
     #Ride recommendation area
-    if time_difference > 10:
-        recommendation = "You missed your target by alot. Lower the target speed or build more endurance"
-    elif time_difference > 0:
-        recommendation = "You were close to your target. Try the same route again and pace more evenly"
-    elif time_difference < -10:
-        recommendation = "You beat your target by alot. Try increasing your speed next ride"
-    elif time_difference < 0:
-        recommendation = "Good ride. You slightly beat your goal"
-    else:
-        recommendation = "Perfect pacing. Try extending the distance next ride"
 
 
 #Print calculations area
