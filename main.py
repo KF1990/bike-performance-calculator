@@ -51,6 +51,18 @@ def get_recommendation (time_difference):
     else:
         return "Perfect pacing. Try extending the distance next ride"
 
+def get_distance_category (distance_km):
+    if distance_km < 20:
+        return "Short ride"
+    if distance_km < 30:
+        return "Medium ride"
+    if distance_km <50:
+        return "Long ride"
+    if distance_km <100:
+        return "Century Ride"
+    else:
+        return "You are insane"
+
 #User input area
 print("Enter bike ride details below")
 print()
@@ -78,6 +90,7 @@ else:
     ride_rating = get_ride_rating(average_speed)
     wattage_rating = get_wattage_rating(estimated_watts)
     recommendation = get_recommendation(time_difference)
+    distance_category = get_distance_category(distance_km)
 
     #Ride recommendation area
 
@@ -93,6 +106,7 @@ else:
     print("Estimated Calories:", round(estimated_calories), "calories")
     print("Ride Rating:", ride_rating)
     print("Ride type:", wattage_rating)
+    print("Distance Category: ", distance_category)
     print()
     print("--- Target area ---")
     print("Estimated time at target speed:", round(target_time_minutes, 1), "minutes")
