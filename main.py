@@ -63,6 +63,15 @@ def get_distance_category (distance_km):
     else:
         return "You are insane"
 
+#target time message area
+def get_time_target_message(time_difference):
+    if time_difference > 0:
+        return ("You missed your target by" + str(round(time_difference, 1)) + "minutes.")
+    elif time_difference < 0:
+        return ("You beat your target by" + str(round(time_difference * -1, 1)) + "minutes." )
+    else:
+        return ("You matched your target time.")
+
 #User input area
 print("Enter bike ride details below")
 print()
@@ -91,6 +100,7 @@ else:
     wattage_rating = get_wattage_rating(estimated_watts)
     recommendation = get_recommendation(time_difference)
     distance_category = get_distance_category(distance_km)
+    target_time_message = get_time_target_message(time_difference)
 
     #Ride recommendation area
 
@@ -116,15 +126,7 @@ else:
     print("--- Recommendations ---")
     print("Recommendation: ", recommendation)
     print()
-
-
-#target time message area
-    if time_difference > 0:
-        print ("You missed your target by", round(time_difference, 1), "minutes.")
-    elif time_difference < 0:
-        print ("You beat your target by", round(time_difference * -1, 1), "minutes." )
-    else:
-        print ("You matched your target time.")
+    print(target_time_message)
 
 #target speed area
     if speed_difference > 0:
