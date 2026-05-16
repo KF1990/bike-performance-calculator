@@ -72,6 +72,14 @@ def get_time_target_message(time_difference):
     else:
         return ("You matched your target time.")
 
+def get_speed_target_message(speed_difference):
+    if speed_difference > 0:
+        return "You were " + str(round(speed_difference, 1)) + " km/h above your target speed."
+    elif speed_difference < 0:
+        return "You were " + str(round(speed_difference * -1, 1)) + " km/h below your target speed."
+    else:
+        return "You matched your target speed exactly."
+
 #User input area
 print("Enter bike ride details below")
 print()
@@ -101,6 +109,7 @@ else:
     recommendation = get_recommendation(time_difference)
     distance_category = get_distance_category(distance_km)
     target_time_message = get_time_target_message(time_difference)
+    target_speed_message = get_speed_target_message(speed_difference)
 
     #Ride recommendation area
 
@@ -128,10 +137,3 @@ else:
     print()
     print(target_time_message)
 
-#target speed area
-    if speed_difference > 0:
-        print ("You were", round(speed_difference, 1), "km/h above your target speed.")
-    elif speed_difference < 0:
-        print ("You were", round(speed_difference * -1, 1), "km/h below your target speed.")
-    else:
-        print ("You matched your target speed exactly.")
